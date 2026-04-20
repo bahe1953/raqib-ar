@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>رقيب — يقظة بلا حدود | RAQIB · Vanya Téléservices</title>
+<meta name="description" content="رقيب — منصة ذكية لإدارة الممتلكات العامة. حل سيادي من فانيا تيليسيرفيس — موريتانيا."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* Palette émeraude profond */
+  --navy:#041410;
+  --navy2:#0a2a1f;
+  --navy3:#0f3d2e;
+  --emerald-deep:#0a3528;
+  --emerald:#0d6e4e;
+  --emerald-mid:#10846a;
+  --emerald-bright:#1fc281;
+  --emerald-soft:#3ddca0;
+  --emerald-glow:#52e5b2;
+  /* Or (accent de contraste) */
+  --gold:#d4af37;
+  --gold-soft:#e8c766;
+  --gold-muted:#9a8042;
+  --cyan:#5fd4e6;
+  --blue:#1565c0;
+  --blue-light:#4fc3f7;
+  /* Textes blanc intense */
+  --white:#ffffff;
+  --white2:#ffffff;
+  --white-soft:#f5fff9;
+  --muted:#f0fff8;
+  --muted2:#c8e8d8;
+  --border:#1a5a44;
+  --border-soft:#144231;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Tajawal',sans-serif;
+  background:var(--navy);
+  color:var(--white);
+  overflow-x:hidden;
+  direction:rtl;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Background ornemental global */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(212,175,55,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 30%, rgba(95,212,230,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 90%, rgba(21,101,192,0.05) 0%, transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;right:0;left:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 5%;
+  background:rgba(4,20,16,0.85);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(212,175,55,0.12);
+}
+.nav-brand{display:flex;align-items:center;gap:0.9rem}
+.nav-logo{
+  width:46px;height:46px;border-radius:10px;
+  background:linear-gradient(135deg,#0a2a1f 0%,#0d6e4e 100%);
+  border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Amiri',serif;font-weight:700;font-size:22px;color:var(--gold);
+  box-shadow:0 4px 20px rgba(212,175,55,0.25);
+  position:relative;
+}
+.nav-logo::after{
+  content:'';position:absolute;inset:3px;border:1px solid rgba(212,175,55,0.3);border-radius:7px;pointer-events:none;
+}
+.nav-name{font-family:'Amiri',serif;font-size:1.4rem;font-weight:700;color:var(--white);letter-spacing:0.5px}
+.nav-tag{font-size:0.72rem;color:var(--gold-soft);margin-top:2px;letter-spacing:1px;font-weight:500}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{color:#e0ffe8;text-decoration:none;font-size:0.92rem;font-weight:500;transition:color 0.2s;position:relative}
+.nav-links a:hover{color:var(--gold-soft)}
+.nav-links a:not(.btn-nav)::after{
+  content:'';position:absolute;bottom:-6px;right:50%;width:0;height:2px;
+  background:var(--gold);transition:all 0.3s;
+}
+.nav-links a:not(.btn-nav):hover::after{width:100%;right:0}
+.btn-nav{
+  padding:0.65rem 1.5rem;border-radius:8px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 100%);
+  color:#0a1a38;font-weight:700;font-size:0.88rem;text-decoration:none;
+  transition:all 0.3s;
+  box-shadow:0 4px 20px rgba(212,175,55,0.25);
+}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,175,55,0.4)}
+.btn-nav::after{display:none}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:8rem 5% 5rem;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 40%, rgba(21,101,192,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 85% 70%, rgba(212,175,55,0.08) 0%, transparent 60%);
+}
+.hero-grid{
+  position:absolute;inset:0;opacity:0.035;
+  background-image:
+    linear-gradient(rgba(212,175,55,0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,175,55,0.5) 1px, transparent 1px);
+  background-size:80px 80px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+}
+/* Motif géométrique arabe */
+.hero-pattern{
+  position:absolute;top:50%;left:-5%;transform:translateY(-50%);
+  width:400px;height:400px;opacity:0.06;pointer-events:none;
+}
+.hero-content{position:relative;z-index:2;max-width:640px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.7rem;
+  background:rgba(212,175,55,0.08);
+  border:1px solid rgba(212,175,55,0.35);
+  padding:0.5rem 1.2rem;border-radius:30px;
+  font-size:0.82rem;font-weight:500;color:var(--gold-soft);
+  margin-bottom:2rem;
+  backdrop-filter:blur(8px);
+}
+.badge-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);animation:pulse 2.5s infinite;flex-shrink:0;
+  box-shadow:0 0 10px var(--gold);
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+h1{
+  font-family:'Amiri',serif;
+  font-size:clamp(3.2rem,7.5vw,6rem);
+  font-weight:700;line-height:1.1;
+  margin-bottom:0.6rem;color:var(--white);
+  letter-spacing:-1px;
+}
+h1 .highlight{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 60%,var(--cyan) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  position:relative;display:inline-block;
+}
+.hero-latin{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(0.95rem,1.8vw,1.2rem);
+  color:var(--gold-muted);font-weight:400;
+  letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:2rem;
+}
+.hero-desc{
+  font-size:1.18rem;line-height:1.9;color:var(--white);
+  margin-bottom:2.5rem;max-width:540px;font-weight:400;
+}
+.hero-desc strong{color:var(--white);font-weight:700}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  padding:1rem 2.2rem;border-radius:8px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-soft) 100%);
+  color:#050d1f;font-weight:700;font-size:1rem;text-decoration:none;
+  transition:all 0.3s;display:inline-flex;align-items:center;gap:0.6rem;
+  font-family:'Tajawal',sans-serif;
+  box-shadow:0 8px 32px rgba(212,175,55,0.25);
+  position:relative;overflow:hidden;
+}
+.btn-primary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.3),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,175,55,0.4)}
+.btn-primary:hover::before{opacity:1}
+.btn-sec{
+  padding:1rem 2.2rem;border-radius:8px;background:transparent;
+  color:var(--white);font-weight:500;font-size:1rem;text-decoration:none;
+  border:1px solid var(--border);transition:all 0.3s;
+  font-family:'Tajawal',sans-serif;
+  display:inline-flex;align-items:center;gap:0.5rem;
+}
+.btn-sec:hover{border-color:var(--gold);color:var(--gold-soft);background:rgba(212,175,55,0.05)}
+
+/* Hero visualization */
+.hero-vis{
+  position:absolute;left:5%;top:50%;transform:translateY(-50%);
+  width:min(460px,42%);display:flex;flex-direction:column;gap:1rem;z-index:1;
+}
+.hcard{
+  background:linear-gradient(135deg,rgba(13,110,78,0.85) 0%,rgba(16,132,106,0.75) 100%);
+  border:1px solid var(--border);border-radius:14px;
+  padding:1.3rem 1.5rem;backdrop-filter:blur(12px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  position:relative;overflow:hidden;
+}
+.hcard::before{
+  content:'';position:absolute;top:0;right:0;left:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.hcard-head{display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem}
+.hc-ico{
+  width:38px;height:38px;border-radius:9px;
+  background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));
+  border:1px solid rgba(212,175,55,0.3);
+  display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
+}
+.hc-t{font-size:0.92rem;font-weight:700;color:var(--white)}
+.hc-s{font-size:0.75rem;color:var(--muted);margin-top:2px}
+.bars{display:flex;flex-direction:column;gap:0.7rem}
+.bar-row{display:flex;align-items:center;gap:0.8rem;font-size:0.82rem;color:var(--muted)}
+.bar-row span:first-child{width:90px;flex-shrink:0;text-align:right;font-weight:500}
+.bar{height:6px;border-radius:3px;background:rgba(26,90,68,0.6);flex:1;overflow:hidden;position:relative}
+.fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-soft) 100%);position:relative}
+.fill::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;width:20%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+  animation:shimmer 3s infinite;
+}
+@keyframes shimmer{0%{transform:translateX(100%)}100%{transform:translateX(-500%)}}
+.bv{min-width:42px;text-align:left;color:var(--gold-soft);font-weight:700;font-family:'Space Grotesk',sans-serif;font-size:0.85rem}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.7rem}
+.scard{
+  text-align:center;padding:0.8rem 0.6rem;
+  background:linear-gradient(135deg,rgba(16,132,106,0.8),rgba(13,110,78,0.6));
+  border-radius:10px;border:1px solid rgba(212,175,55,0.2);
+}
+.snum{font-size:1.5rem;font-weight:700;color:var(--gold);font-family:'Amiri',serif;line-height:1.2}
+.slabel{font-size:0.68rem;color:var(--muted);margin-top:0.2rem;letter-spacing:0.5px}
+
+/* SECTIONS */
+.sec{padding:7rem 5%;position:relative;z-index:1}
+.sec-label{
+  font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:1.2rem;
+  font-family:'Space Grotesk',sans-serif;
+  display:inline-flex;align-items:center;gap:0.8rem;
+}
+.sec-label::before{
+  content:'';width:30px;height:1px;background:var(--gold);
+}
+h2{
+  font-family:'Amiri',serif;
+  font-size:clamp(2.2rem,5vw,3.5rem);
+  font-weight:700;line-height:1.2;margin-bottom:1.5rem;
+  letter-spacing:-0.5px;
+}
+h2 span{color:var(--gold-soft)}
+.muted{color:var(--white);max-width:580px;line-height:1.9;font-size:1.08rem;font-weight:400}
+
+/* Ornement de séparation */
+.ornament{
+  display:flex;align-items:center;justify-content:center;
+  margin:0 5%;padding:2rem 0;gap:1.2rem;
+}
+.ornament-line{height:1px;width:80px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.ornament-diamond{
+  width:8px;height:8px;background:var(--gold);transform:rotate(45deg);
+  box-shadow:0 0 12px rgba(212,175,55,0.5);
+}
+.ornament-star{color:var(--gold);font-size:1rem;opacity:0.8}
+
+/* PROBLEMS */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.pcard{
+  background:linear-gradient(180deg,rgba(13,110,78,0.6) 0%,rgba(4,20,16,0.8) 100%);
+  border:1px solid var(--border);border-radius:14px;
+  padding:2rem 1.8rem;position:relative;overflow:hidden;
+  transition:all 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+.pcard:hover{
+  border-color:rgba(212,175,55,0.4);transform:translateY(-5px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+.pcard::before{
+  content:'';position:absolute;top:0;right:0;left:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.pcard:hover::before{opacity:1}
+.pnum{
+  font-size:3rem;font-weight:700;font-family:'Amiri',serif;
+  color:rgba(212,175,55,0.1);position:absolute;top:0.5rem;left:1.5rem;
+  line-height:1;
+}
+.pico{font-size:2rem;margin-bottom:1.2rem;display:inline-block}
+.ptitle{font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:0.7rem;font-family:'Amiri',serif;line-height:1.3}
+.pdesc{font-size:0.95rem;color:var(--white);line-height:1.8;font-weight:400}
+
+.quote-box{
+  margin-top:3rem;padding:1.5rem 2rem;
+  background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.02));
+  border-right:3px solid var(--gold);border-radius:0 12px 12px 0;
+  position:relative;
+}
+.quote-box p{color:var(--gold-soft);font-weight:600;font-size:1.05rem}
+
+/* SOLUTION */
+.sol-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center}
+.sol-list{display:flex;flex-direction:column;gap:1.3rem;margin-top:2rem}
+.sol-item{display:flex;gap:1.1rem;align-items:flex-start}
+.sol-chk{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:13px;color:#050d1f;font-weight:900;margin-top:2px;
+  box-shadow:0 4px 14px rgba(212,175,55,0.3);
+}
+.sol-t{font-size:1.05rem;color:var(--white);line-height:1.75;font-weight:400}
+.sol-t strong{color:var(--white);font-weight:700}
+
+.sol-vis{
+  background:linear-gradient(180deg,rgba(13,110,78,0.8) 0%,rgba(4,20,16,0.9) 100%);
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.5);
+}
+.sv-hdr{
+  background:linear-gradient(90deg,rgba(16,132,106,0.8),rgba(13,110,78,0.6));
+  border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem;display:flex;align-items:center;gap:0.6rem;
+}
+.sv-dot{width:10px;height:10px;border-radius:50%}
+.sv-ttl{font-size:0.88rem;color:var(--muted);margin-right:0.5rem;font-family:'Space Grotesk',sans-serif;font-weight:500}
+.sv-body{padding:1.5rem 1.8rem}
+.sv-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.85rem 0;border-bottom:1px solid rgba(26,90,68,0.4);font-size:0.9rem;
+}
+.sv-row:last-child{border-bottom:none}
+.sv-lbl{color:var(--muted);font-weight:500}
+.badge{padding:0.3rem 0.85rem;border-radius:20px;font-size:0.75rem;font-weight:600}
+.bg-tag{background:rgba(212,175,55,0.15);color:var(--gold-soft);border:1px solid rgba(212,175,55,0.35)}
+.bb{background:rgba(26,90,68,0.8);color:#7fa8d4;border:1px solid var(--border);font-family:'Space Grotesk',sans-serif}
+.ba{background:rgba(95,212,230,0.1);color:var(--cyan);border:1px solid rgba(95,212,230,0.25)}
+
+/* FEATURES */
+.feat-bg{
+  background:linear-gradient(180deg,transparent 0%,rgba(13,110,78,0.4) 50%,transparent 100%);
+  position:relative;
+}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.fcard{
+  background:linear-gradient(180deg,rgba(13,110,78,0.6),rgba(4,20,16,0.8));
+  border:1px solid var(--border);border-radius:14px;
+  padding:2rem;transition:all 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  position:relative;overflow:hidden;
+}
+.fcard::before{
+  content:'';position:absolute;top:0;right:0;left:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  transform:scaleX(0);transform-origin:right;transition:transform 0.4s;
+}
+.fcard:hover{border-color:rgba(212,175,55,0.4);transform:translateY(-4px)}
+.fcard:hover::before{transform:scaleX(1)}
+.fico{
+  width:54px;height:54px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));
+  border:1px solid rgba(212,175,55,0.3);
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  margin-bottom:1.3rem;
+}
+.ftitle{font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:1rem;font-family:'Amiri',serif;line-height:1.3}
+.flist{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.flist li{
+  font-size:0.9rem;color:var(--white);padding-right:1.3rem;
+  position:relative;line-height:1.6;font-weight:400;
+}
+.flist li::before{
+  content:'◆';position:absolute;right:0;color:var(--gold);font-size:0.7rem;top:2px;
+}
+
+/* TECH */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3rem}
+.tcard{
+  background:rgba(13,110,78,0.5);
+  border:1px solid var(--border);border-radius:14px;
+  padding:1.8rem 1.5rem;text-align:center;transition:all 0.3s;
+}
+.tcard:hover{border-color:rgba(212,175,55,0.35);transform:translateY(-3px)}
+.tico{font-size:2rem;margin-bottom:1rem}
+.tname{font-size:1.25rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;font-family:'Amiri',serif;line-height:1.3}
+.tdesc{font-size:0.9rem;color:var(--white);line-height:1.75;font-weight:400}
+
+/* RESULTS */
+.res-bg{background:linear-gradient(180deg,transparent,rgba(212,175,55,0.03),transparent)}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3rem}
+.rcard{
+  background:linear-gradient(180deg,rgba(13,110,78,0.7),rgba(4,20,16,0.8));
+  border:1px solid var(--border);border-radius:14px;
+  padding:2.2rem 1.5rem;text-align:center;transition:all 0.3s;
+  position:relative;overflow:hidden;
+}
+.rcard::before{
+  content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;
+  background:radial-gradient(circle,rgba(212,175,55,0.12),transparent 70%);
+  opacity:0;transition:opacity 0.4s;
+}
+.rcard:hover{transform:translateY(-5px);border-color:rgba(212,175,55,0.3)}
+.rcard:hover::before{opacity:1}
+.rico{font-size:2.2rem;margin-bottom:1rem;position:relative;z-index:1}
+.rtitle{font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;font-family:'Amiri',serif;position:relative;z-index:1;line-height:1.3}
+.rdesc{font-size:0.9rem;color:var(--white);line-height:1.7;position:relative;z-index:1;font-weight:400}
+
+.pills{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;justify-content:center}
+.pill{
+  padding:0.75rem 1.8rem;border-radius:30px;
+  background:linear-gradient(135deg,rgba(13,110,78,0.7),rgba(4,20,16,0.5));
+  border:1px solid var(--border);font-size:0.95rem;color:var(--white);
+  transition:all 0.3s;font-weight:500;
+}
+.pill:hover{
+  border-color:var(--gold);background:rgba(212,175,55,0.08);color:var(--gold-soft);
+  transform:translateY(-2px);
+}
+
+/* WHY */
+.wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.wcard{
+  display:flex;gap:1.3rem;align-items:flex-start;
+  background:linear-gradient(135deg,rgba(13,110,78,0.5),rgba(4,20,16,0.7));
+  border:1px solid var(--border);border-radius:14px;
+  padding:1.8rem;transition:all 0.3s;
+}
+.wcard:hover{border-color:rgba(212,175,55,0.3);transform:translateY(-2px)}
+.wnum{
+  font-family:'Amiri',serif;font-size:2.8rem;font-weight:700;
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  flex-shrink:0;line-height:1;width:3rem;text-align:center;
+}
+.wtitle{font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:0.6rem;font-family:'Amiri',serif;line-height:1.3}
+.wdesc{font-size:0.95rem;color:var(--white);line-height:1.8;font-weight:400}
+
+/* CONTACT */
+.contact-sec{
+  padding:7rem 5%;
+  background:linear-gradient(180deg,transparent,rgba(13,110,78,0.4));
+  position:relative;z-index:1;
+}
+.company-header{
+  text-align:center;margin-bottom:3rem;padding:2.5rem 2rem;
+  background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.02));
+  border:1px solid rgba(212,175,55,0.2);border-radius:16px;
+  max-width:900px;margin-right:auto;margin-left:auto;
+  position:relative;overflow:hidden;
+}
+.company-header::before,.company-header::after{
+  content:'❋';position:absolute;top:50%;transform:translateY(-50%);
+  color:rgba(212,175,55,0.3);font-size:1.5rem;
+}
+.company-header::before{right:1.5rem}
+.company-header::after{left:1.5rem}
+.company-name-ar{
+  font-family:'Amiri',serif;font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:700;color:var(--white);margin-bottom:0.4rem;letter-spacing:0.5px;
+}
+.company-name-fr{
+  font-family:'Space Grotesk',sans-serif;font-size:1rem;
+  color:var(--gold-soft);letter-spacing:3px;margin-bottom:1rem;text-transform:uppercase;
+}
+.company-location{display:flex;align-items:center;justify-content:center;gap:0.6rem;color:var(--muted);font-size:0.95rem;flex-wrap:wrap}
+.company-location strong{color:var(--white);font-weight:600}
+.flag{display:inline-block;font-size:1.1rem}
+
+.cwrap{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;max-width:1100px;margin:0 auto}
+.cinfo{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+.citem{
+  display:flex;align-items:center;gap:1.1rem;padding:1.2rem 1.5rem;
+  background:linear-gradient(135deg,rgba(13,110,78,0.7),rgba(4,20,16,0.5));
+  border:1px solid var(--border);border-radius:12px;
+  transition:all 0.3s;text-decoration:none;color:inherit;
+}
+.citem:hover{border-color:rgba(212,175,55,0.4);transform:translateX(-4px)}
+.cico{
+  width:44px;height:44px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));
+  border:1px solid rgba(212,175,55,0.3);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.clbl{font-size:0.75rem;color:var(--muted);margin-bottom:0.2rem;letter-spacing:0.5px}
+.cval{font-size:1rem;font-weight:700;color:var(--white);font-family:'Space Grotesk',sans-serif;letter-spacing:0.5px}
+.address-item{flex-direction:column;align-items:flex-start;gap:0.6rem}
+.address-item .top{display:flex;align-items:center;gap:1rem;width:100%}
+.address-detail{padding-right:3.5rem;font-size:0.92rem;color:var(--white2);line-height:1.7}
+.address-detail .ar{font-family:'Amiri',serif;font-size:1.05rem;color:var(--white);margin-bottom:0.2rem}
+.address-detail .fr{color:var(--muted);font-size:0.85rem;font-family:'Space Grotesk',sans-serif;letter-spacing:0.5px}
+
+.cta-card{
+  background:linear-gradient(135deg,rgba(16,132,106,0.8),rgba(13,110,78,0.6));
+  border:1px solid rgba(212,175,55,0.25);border-radius:18px;
+  padding:2.8rem 2.2rem;text-align:center;
+  position:relative;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.4);
+}
+.cta-card::before{
+  content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;
+  background:radial-gradient(circle at center,rgba(212,175,55,0.1) 0%,transparent 50%);
+  animation:rotate 20s linear infinite;
+}
+@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.cta-card > *{position:relative;z-index:1}
+.cta-big{
+  font-family:'Amiri',serif;font-size:2rem;color:var(--gold-soft);
+  margin-bottom:1rem;line-height:1.4;font-weight:700;
+}
+.cta-sub{font-size:0.98rem;color:var(--muted);line-height:1.8;margin-bottom:2.2rem}
+.btns{display:flex;flex-direction:column;gap:0.9rem}
+.btns a{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:0.8rem;
+  padding:1rem 1.3rem;
+  border-radius:10px;
+  text-decoration:none;
+  font-family:'Tajawal',sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  transition:all 0.3s;
+  text-align:center;
+}
+.btns .btn-ico{font-size:1.15rem;line-height:1;grid-column:1}
+.btns .btn-txt{text-align:center;grid-column:2}
+.btns .btn-num{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  letter-spacing:1px;
+  font-size:0.95rem;
+  grid-column:3;
+  unicode-bidi:isolate;
+}
+/* Pour le bouton qui n'a pas de numéro (طلب عرض) : centrer le texte */
+.btns a:not(:has(.btn-num)) .btn-txt{grid-column:2 / 4}
+.bwa{
+  background:linear-gradient(135deg,rgba(37,211,102,0.15),rgba(37,211,102,0.05));
+  color:#25d366;
+  border:1px solid rgba(37,211,102,0.35);
+}
+.bwa:hover{background:rgba(37,211,102,0.25);transform:translateY(-2px)}
+.bdemo{
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  color:#050d1f;
+  box-shadow:0 8px 25px rgba(212,175,55,0.25);
+}
+.bdemo:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(212,175,55,0.4)}
+.btel{
+  background:transparent;
+  color:var(--gold-soft);
+  font-weight:600;
+  font-size:0.95rem;
+  border:1px solid rgba(212,175,55,0.3);
+}
+.btel:hover{border-color:var(--gold);background:rgba(212,175,55,0.08)}
+
+/* FOOTER */
+footer{
+  padding:3.5rem 5% 2.5rem;border-top:1px solid var(--border);
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
+  position:relative;z-index:1;
+  background:linear-gradient(180deg,transparent,rgba(4,20,16,0.8));
+}
+.fbrand-wrap{display:flex;align-items:flex-start;gap:1rem}
+.fbrand{
+  font-family:'Amiri',serif;font-size:1.5rem;
+  background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  font-weight:700;
+}
+.ftag{font-size:0.88rem;color:var(--muted);margin-top:0.4rem;line-height:1.7}
+.fcompany{font-size:0.82rem;color:var(--muted2);margin-top:0.8rem;font-style:italic}
+.fcon{text-align:left;font-size:0.85rem;color:var(--muted);line-height:2;direction:ltr}
+.fcon > *{display:block}
+.fcon a{color:var(--gold-soft);text-decoration:none;transition:color 0.2s}
+.fcon a:hover{color:var(--gold)}
+.fcon strong{color:var(--white)}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.f1{animation:fadeUp 0.8s 0.1s ease forwards;opacity:0}
+.f2{animation:fadeUp 0.8s 0.25s ease forwards;opacity:0}
+.f3{animation:fadeUp 0.8s 0.4s ease forwards;opacity:0}
+.f4{animation:fadeUp 0.8s 0.55s ease forwards;opacity:0}
+
+/* Bouton WhatsApp flottant */
+.wa-float{
+  position:fixed;bottom:2rem;left:2rem;z-index:99;
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 30px rgba(37,211,102,0.4);
+  text-decoration:none;color:white;font-size:32px;
+  transition:all 0.3s;
+  animation:waPulse 2.5s infinite;
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,0.6)}
+.wa-float::before{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:2px solid rgba(37,211,102,0.4);
+  animation:waRing 2.5s infinite;
+}
+@keyframes waPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes waRing{
+  0%{transform:scale(1);opacity:1}
+  100%{transform:scale(1.4);opacity:0}
+}
+.wa-float-label{
+  position:absolute;right:70px;top:50%;transform:translateY(-50%);
+  background:rgba(4,20,16,0.95);color:white;
+  padding:0.6rem 1rem;border-radius:8px;
+  font-size:0.85rem;white-space:nowrap;
+  border:1px solid rgba(37,211,102,0.3);
+  opacity:0;pointer-events:none;transition:opacity 0.3s;
+  font-family:'Tajawal',sans-serif;
+}
+.wa-float:hover .wa-float-label{opacity:1}
+@media(max-width:600px){
+  .wa-float{bottom:1.2rem;left:1.2rem;width:56px;height:56px;font-size:28px}
+  .wa-float-label{display:none}
+}
+
+/* Responsive */
+@media(max-width:1100px){
+  .hero-vis{width:min(400px,38%)}
+}
+@media(max-width:960px){
+  .hero{padding:7rem 5% 4rem}
+  .hero-vis{display:none}
+  .sol-wrap,.cwrap{grid-template-columns:1fr;gap:3rem}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .tgrid{grid-template-columns:1fr 1fr}
+  .rgrid{grid-template-columns:1fr 1fr}
+  .wgrid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr}
+  .fcon{text-align:right;direction:rtl}
+}
+@media(max-width:600px){
+  nav{padding:0.8rem 5%}
+  nav .nav-links{display:none}
+  nav .nav-brand .nav-tag{display:none}
+  .sec,.contact-sec{padding:5rem 5%}
+  .fgrid,.tgrid,.rgrid{grid-template-columns:1fr}
+  .hero-cta{flex-direction:column}
+  .btn-primary,.btn-sec{width:100%;justify-content:center}
+  .company-header{padding:2rem 1.2rem}
+  .company-header::before,.company-header::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">ر</div>
+    <div>
+      <div class="nav-name">رقيب</div>
+      <div class="nav-tag">RAQIB · يقظة بلا حدود</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#problemes">المشاكل</a>
+    <a href="#solution">الحل</a>
+    <a href="#fonctionnalites">المميزات</a>
+    <a href="#contact">تواصل</a>
+    <a href="https://wa.me/22226041021?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%20%D9%84%D9%86%D8%B8%D8%A7%D9%85%20%D8%B1%D9%82%D9%8A%D8%A8" target="_blank" class="btn-nav">💬 طلب عرض مجاني</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <svg class="hero-pattern" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="arabesque" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+        <path d="M25 0 L50 25 L25 50 L0 25 Z" fill="none" stroke="#d4af37" stroke-width="0.8"/>
+        <circle cx="25" cy="25" r="8" fill="none" stroke="#d4af37" stroke-width="0.5"/>
+      </pattern>
+    </defs>
+    <rect width="200" height="200" fill="url(#arabesque)"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-badge f1"><span class="badge-dot"></span>حل ذكي وسيادي لإدارة الممتلكات العامة</div>
+    <h1 class="f2">رقيب<br><span class="highlight">يقظة</span><br>بلا حدود.</h1>
+    <div class="hero-latin f2">RAQIB · Vigilance sans faille</div>
+    <p class="hero-desc f3">المنصة الحديثة التي <strong>تُمركز وتتبع وتؤمّن</strong> جميع ممتلكاتك العامة. كل أصل مرئي. كل إجراء موثّق. كل مسؤول معروف.</p>
+    <div class="hero-cta f4">
+      <a href="https://wa.me/22226041021?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%20%D9%84%D9%86%D8%B8%D8%A7%D9%85%20%D8%B1%D9%82%D9%8A%D8%A8" target="_blank" class="btn-primary">💬 طلب عرض تجريبي عبر واتساب</a>
+      <a href="#solution" class="btn-sec">اكتشف الحل ←</a>
+    </div>
+  </div>
+  <div class="hero-vis">
+    <div class="hcard">
+      <div class="hcard-head">
+        <div class="hc-ico">📊</div>
+        <div><div class="hc-t">لوحة متابعة الممتلكات</div><div class="hc-s">تحديث فوري ومستمر</div></div>
+      </div>
+      <div class="bars">
+        <div class="bar-row"><span>الأصول</span><div class="bar"><div class="fill" style="width:88%"></div></div><span class="bv">2,840</span></div>
+        <div class="bar-row"><span>مُتتبَّعة</span><div class="bar"><div class="fill" style="width:100%"></div></div><span class="bv">100%</span></div>
+        <div class="bar-row"><span>القيمة الصافية</span><div class="bar"><div class="fill" style="width:65%"></div></div><span class="bv">65%</span></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="scard"><div class="snum">صفر</div><div class="slabel">اختفاء مجهول</div></div>
+      <div class="scard"><div class="snum">ع/ف</div><div class="slabel">ثنائي اللغة</div></div>
+      <div class="scard"><div class="snum">∞</div><div class="slabel">مستخدمون</div></div>
+    </div>
+    <div class="hcard">
+      <div class="hcard-head">
+        <div class="hc-ico">🔐</div>
+        <div><div class="hc-t">آخر العمليات</div><div class="hc-s">سجل مؤرخ ومفصّل</div></div>
+      </div>
+      <div class="bars">
+        <div class="bar-row" style="font-size:0.78rem"><span style="width:auto;flex:1;color:var(--white)">نقل مكتب 12 إلى مكتب 07</span><span style="color:var(--gold-soft)">✓ موثّق</span></div>
+        <div class="bar-row" style="font-size:0.78rem"><span style="width:auto;flex:1;color:var(--white)">خروج طابعة HP-445</span><span style="color:var(--gold-soft)">✓ معتمد</span></div>
+        <div class="bar-row" style="font-size:0.78rem"><span style="width:auto;flex:1;color:var(--white)">إحصاء الربع الثاني مُعتمد</span><span style="color:var(--cyan)">★ رسمي</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">
+  <div class="ornament-line"></div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-star">❋</div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- PROBLEMS -->
+<section class="sec" id="problemes">
+  <div class="sec-label">الواقع الحالي</div>
+  <h2>ممتلكاتك تفلت<br>من <span>سيطرتك</span> اليوم</h2>
+  <p class="muted">كل عام، تخسر المؤسسات الملايين بسبب الأصول غير المتتبعة والمشتريات غير المبررة وغياب الشفافية.</p>
+  <div class="pgrid">
+    <div class="pcard"><div class="pnum">١</div><div class="pico">👁️</div><div class="ptitle">غياب الرؤية الشاملة</div><div class="pdesc">لا توجد صورة كاملة عن مخزون الأصول. بعض الممتلكات موجودة دون أن يعلم بها المسؤولون.</div></div>
+    <div class="pcard"><div class="pnum">٢</div><div class="pico">📉</div><div class="ptitle">اختفاء الممتلكات</div><div class="pdesc">معدات تُفقد أو تُنقل أو تخرج دون أي إجراء رسمي. يتآكل الرصيد العام في صمت.</div></div>
+    <div class="pcard"><div class="pnum">٣</div><div class="pico">📂</div><div class="ptitle">غياب المركزية</div><div class="pdesc">كل إدارة تدير أصولها بشكل منفصل: ملفات إكسل متفرقة وغير متوافقة وغير مشتركة.</div></div>
+    <div class="pcard"><div class="pnum">٤</div><div class="pico">💸</div><div class="ptitle">مشتريات غير مبررة</div><div class="pdesc">يستحيل إثبات جدوى شراء سابق أو تبرير حاجة مستقبلية بدون سجل تاريخي موثوق.</div></div>
+  </div>
+  <div class="quote-box">
+    <p>👈 النتيجة: خسائر مالية ضخمة وغياب تام للشفافية.</p>
+  </div>
+</section>
+
+<div class="ornament">
+  <div class="ornament-line"></div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-star">❋</div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- SOLUTION -->
+<section class="sec" id="solution">
+  <div class="sol-wrap">
+    <div>
+      <div class="sec-label">الحل الأمثل</div>
+      <h2>رقيب — منصة واحدة،<br><span>رؤية كاملة</span></h2>
+      <p class="muted">حل حديث وسيادي، مصمم للواقع الإداري والمحاسبي للدول الناطقة بالعربية والفرنسية.</p>
+      <div class="sol-list">
+        <div class="sol-item"><div class="sol-chk">✓</div><div class="sol-t"><strong>مركزة</strong> جميع ممتلكاتك في قاعدة بيانات واحدة وآمنة</div></div>
+        <div class="sol-item"><div class="sol-chk">✓</div><div class="sol-t"><strong>تتبع</strong> كل أصل في الوقت الفعلي في أي مكان وأي وقت</div></div>
+        <div class="sol-item"><div class="sol-chk">✓</div><div class="sol-t"><strong>تأمين</strong> ممتلكاتك من أي اختفاء غير موثّق</div></div>
+        <div class="sol-item"><div class="sol-chk">✓</div><div class="sol-t"><strong>تبرير</strong> قرارات الاستثمار بناءً على بيانات موثوقة</div></div>
+      </div>
+    </div>
+    <div class="sol-vis">
+      <div class="sv-hdr">
+        <div class="sv-dot" style="background:#ff5f57"></div>
+        <div class="sv-dot" style="background:#febc2e"></div>
+        <div class="sv-dot" style="background:#28c840"></div>
+        <span class="sv-ttl">رقيب — بطاقة الأصل</span>
+      </div>
+      <div class="sv-body">
+        <div class="sv-row"><span class="sv-lbl">المرجع</span><span style="color:var(--white);font-family:'Space Grotesk',monospace">IMM-2024-0847</span></div>
+        <div class="sv-row"><span class="sv-lbl">التسمية</span><span style="color:var(--white)">حاسوب محمول Dell</span></div>
+        <div class="sv-row"><span class="sv-lbl">الإدارة</span><span style="color:var(--white)">DRSF — مكتب 12</span></div>
+        <div class="sv-row"><span class="sv-lbl">قيمة الاقتناء</span><span style="color:var(--white);font-family:'Space Grotesk',sans-serif">850,000 أوقية</span></div>
+        <div class="sv-row"><span class="sv-lbl">القيمة الصافية</span><span style="color:var(--gold-soft);font-weight:700;font-family:'Space Grotesk',sans-serif">637,500 أوقية</span></div>
+        <div class="sv-row"><span class="sv-lbl">الاستهلاك</span><span class="badge ba">25% — السنة الثالثة</span></div>
+        <div class="sv-row"><span class="sv-lbl">الباركود</span><span class="badge bb">||| 847-XR-2024</span></div>
+        <div class="sv-row"><span class="sv-lbl">الحالة</span><span class="badge bg-tag">✓ نشط — مُتتبَّع</span></div>
+        <div class="sv-row"><span class="sv-lbl">المسؤول</span><span style="color:var(--white)">السيد أحمد جيالو</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">
+  <div class="ornament-line"></div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-star">❋</div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- FEATURES -->
+<section class="sec feat-bg" id="fonctionnalites">
+  <div class="sec-label">المميزات</div>
+  <h2>كل ما تحتاجه،<br>لا <span>زيادة</span> ولا نقصان</h2>
+  <div class="fgrid">
+    <div class="fcard"><div class="fico">🏢</div><div class="ftitle">إدارة الأصول الثابتة</div><ul class="flist"><li>تسجيل كامل ومنظّم</li><li>ترميز فريد بالباركود</li><li>متابعة حسب الإدارة والمسؤول</li><li>تتبع شامل مع التأريخ الكامل</li></ul></div>
+    <div class="fcard"><div class="fico">📉</div><div class="ftitle">الاستهلاك التلقائي</div><ul class="flist"><li>حساب فوري ودقيق</li><li>متابعة القيم الصافية المحاسبية</li><li>قوائم مالية موثوقة وقابلة للتدقيق</li><li>جدول الاستهلاك متعدد السنوات</li></ul></div>
+    <div class="fcard"><div class="fico">🔄</div><div class="ftitle">متابعة الحركات</div><ul class="flist"><li>التعيين والنقل بين الإدارات</li><li>سجل كامل لكل أصل</li><li>جرد مادي قابل للمصادقة</li><li>تنبيهات تلقائية عند الشذوذات</li></ul></div>
+    <div class="fcard"><div class="fico">📊</div><div class="ftitle">لوحات المعلومات الذكية</div><ul class="flist"><li>رؤية شاملة في الوقت الفعلي</li><li>دعم اتخاذ القرار الاستراتيجي</li><li>وضع كامل للأصول الثابتة</li><li>تنبيهات ومؤشرات رئيسية</li></ul></div>
+    <div class="fcard"><div class="fico">🔒</div><div class="ftitle">الأمان والشفافية</div><ul class="flist"><li>وصول آمن حسب ملفات المستخدمين</li><li>سجل بجميع العمليات</li><li>بيانات محمية ومحفوظة</li><li>لا إجراء بدون صاحب معروف</li></ul></div>
+    <div class="fcard"><div class="fico">📄</div><div class="ftitle">التقارير والإصدارات</div><ul class="flist"><li>كشف كامل بالأصول الثابتة</li><li>جدول الاستهلاك متعدد السنوات</li><li>جرد مادي قابل للمصادقة</li><li>تقارير قابلة للتصدير والطباعة</li></ul></div>
+  </div>
+</section>
+
+<div class="ornament">
+  <div class="ornament-line"></div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-star">❋</div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- TECH -->
+<section class="sec">
+  <div class="sec-label">البنية التقنية</div>
+  <h2>تقنية قوية<br>وذات <span>سيادة وطنية</span></h2>
+  <div class="tgrid">
+    <div class="tcard"><div class="tico">🖥️</div><div class="tname">بنية عميل-خادم</div><div class="tdesc">أداء مثالي حتى على الشبكات ذات النطاق المنخفض. نشر سريع محلياً أو على الشبكة الداخلية.</div></div>
+    <div class="tcard"><div class="tico">👥</div><div class="tname">وصول متزامن غير محدود</div><div class="tdesc">جميع المستخدمين متصلون في نفس الوقت دون أي تأثير على الأداء.</div></div>
+    <div class="tcard"><div class="tico">🌐</div><div class="tname">ثنائي اللغة ع/ف</div><div class="tdesc">واجهة كاملة باللغتين العربية والفرنسية. مصمم للإدارات ذات اللغتين.</div></div>
+    <div class="tcard"><div class="tico">🗄️</div><div class="tname">قاعدة بيانات بدون رسوم</div><div class="tdesc">مفتوحة المصدر بدون رسوم ترخيص. لا اعتماد على أي ناشر أجنبي.</div></div>
+    <div class="tcard"><div class="tico">💾</div><div class="tname">نسخ احتياطي تلقائي</div><div class="tdesc">جدولة النسخ الاحتياطي الدوري. بياناتك محمية باستمرار دون تدخل يدوي.</div></div>
+    <div class="tcard"><div class="tico">🏷️</div><div class="tname">ترميز الباركود</div><div class="tdesc">كل أصل يحصل على رمز فريد قابل للطباعة. تعريف سريع في الميدان.</div></div>
+  </div>
+</section>
+
+<div class="ornament">
+  <div class="ornament-line"></div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-star">❋</div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- RESULTS -->
+<section class="sec res-bg">
+  <div class="sec-label">النتائج</div>
+  <h2>فوائد فورية<br>وقابلة <span>للقياس</span></h2>
+  <div class="rgrid">
+    <div class="rcard"><div class="rico">🔍</div><div class="rtitle">شفافية كاملة</div><div class="rdesc">كل أصل مرئي، كل إجراء موثّق، كل مسؤول معروف.</div></div>
+    <div class="rcard"><div class="rico">🛡️</div><div class="rtitle">تقليص الخسائر</div><div class="rdesc">صفر اختفاء غير موثّق. الرصيد العام أخيراً تحت السيطرة.</div></div>
+    <div class="rcard"><div class="rico">📈</div><div class="rtitle">إدارة ميزانية أفضل</div><div class="rdesc">قرارات مبنية على وقائع حقيقية. توداع المشتريات المتكررة.</div></div>
+    <div class="rcard"><div class="rico">🏛️</div><div class="rtitle">رقابة حكومية مُعززة</div><div class="rdesc">التدقيق والتفتيش أصبح سهلاً. مصداقية مؤسسية معززة.</div></div>
+  </div>
+  <div style="margin-top:3.5rem;text-align:center">
+    <p style="color:var(--gold-soft);margin-bottom:1.5rem;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;font-weight:600">مثالي لـ</p>
+    <div class="pills">
+      <div class="pill">🏛️ الوزارات</div>
+      <div class="pill">🏢 المؤسسات العامة</div>
+      <div class="pill">🏙️ الجماعات المحلية</div>
+      <div class="pill">🏗️ الشركات الكبرى</div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">
+  <div class="ornament-line"></div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-star">❋</div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- WHY -->
+<section class="sec">
+  <div class="sec-label">لماذا رقيب؟</div>
+  <h2>٦ أسباب تجعل رقيب<br>الخيار <span>الأمثل</span></h2>
+  <div class="wgrid">
+    <div class="wcard"><div class="wnum">١</div><div><div class="wtitle">حل محلي ومُكيَّف</div><div class="wdesc">مصمم للواقع الإداري والمحاسبي والثقافي للدول الناطقة بالعربية والفرنسية.</div></div></div>
+    <div class="wcard"><div class="wnum">٢</div><div><div class="wtitle">بدون رسوم ترخيص</div><div class="wdesc">لا رسوم سنوية، لا مفاجآت في الميزانية. أنت تتحكم كلياً في استثمارك.</div></div></div>
+    <div class="wcard"><div class="wnum">٣</div><div><div class="wtitle">نشر سهل وسريع</div><div class="wdesc">التثبيت على بنيتك التحتية الحالية. تدريب المستخدمين في أقل من يومين.</div></div></div>
+    <div class="wcard"><div class="wnum">٤</div><div><div class="wtitle">أداة حوكمة رشيدة</div><div class="wdesc">أكثر من مجرد برنامج: أداة للحوكمة الرشيدة. تعزز مصداقية مؤسساتك.</div></div></div>
+    <div class="wcard"><div class="wnum">٥</div><div><div class="wtitle">أمان قصوى</div><div class="wdesc">تحكم في الوصول حسب الملفات، سجل كامل للعمليات، لا إجراء بدون أثر أو صاحب.</div></div></div>
+    <div class="wcard"><div class="wnum">٦</div><div><div class="wtitle">دعم ومرافقة كاملة</div><div class="wdesc">فريق متخصص يرافقك من التثبيت إلى تدريب فرقك وتطوير كفاءاتهم.</div></div></div>
+  </div>
+</section>
+
+<div class="ornament">
+  <div class="ornament-line"></div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-star">❋</div>
+  <div class="ornament-diamond"></div>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="sec-label" style="justify-content:center;display:flex">تواصل معنا</div>
+    <h2 style="text-align:center;margin-bottom:0.5rem">احمِ ممتلكاتك<br><span>ابدأ اليوم.</span></h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:3rem;font-size:1.05rem;max-width:560px;margin-right:auto;margin-left:auto;line-height:1.85">اطلب عرضاً تجريبياً مجانياً. خبراؤنا يرافقونك من الألف إلى الياء.</p>
+
+    <!-- ENCART SOCIÉTÉ -->
+    <div class="company-header">
+      <div class="company-name-ar">فانيا تيليسيرفيس</div>
+      <div class="company-name-fr">Vanya Téléservices</div>
+      <div class="company-location">
+        <span class="flag">🇲🇷</span>
+        <strong>موريتانيا</strong>
+        <span style="color:var(--muted2)">·</span>
+        <span>Mauritanie</span>
+        <span style="color:var(--muted2)">·</span>
+        <span>مشروع H110 — Mechroue H110</span>
+      </div>
+    </div>
+
+    <div class="cwrap">
+      <div>
+        <h3 style="color:var(--white);font-family:'Amiri',serif;font-size:1.4rem;margin-bottom:0.5rem">معلومات الاتصال</h3>
+        <p style="color:var(--muted);font-size:0.92rem;margin-bottom:0.4rem">التواصل حصرياً عبر واتساب</p>
+        <p style="color:var(--gold-soft);font-size:0.82rem;font-family:'Space Grotesk',sans-serif;letter-spacing:0.5px">Contact uniquement par WhatsApp</p>
+        <div class="cinfo">
+          <a href="https://wa.me/22236617222" target="_blank" class="citem" style="border-color:rgba(37,211,102,0.25)">
+            <div class="cico" style="background:linear-gradient(135deg,rgba(37,211,102,0.18),rgba(37,211,102,0.05));border-color:rgba(37,211,102,0.35)">💬</div>
+            <div><div class="clbl">واتساب · WhatsApp</div><div class="cval" style="color:#25d366" dir="ltr">+222 36 61 72 22</div></div>
+          </a>
+          <a href="https://wa.me/22236330718" target="_blank" class="citem" style="border-color:rgba(37,211,102,0.25)">
+            <div class="cico" style="background:linear-gradient(135deg,rgba(37,211,102,0.18),rgba(37,211,102,0.05));border-color:rgba(37,211,102,0.35)">💬</div>
+            <div><div class="clbl">واتساب · WhatsApp</div><div class="cval" style="color:#25d366" dir="ltr">+222 36 33 07 18</div></div>
+          </a>
+          <a href="https://wa.me/22226041021" target="_blank" class="citem" style="border-color:rgba(37,211,102,0.25)">
+            <div class="cico" style="background:linear-gradient(135deg,rgba(37,211,102,0.18),rgba(37,211,102,0.05));border-color:rgba(37,211,102,0.35)">💬</div>
+            <div><div class="clbl">واتساب · WhatsApp</div><div class="cval" style="color:#25d366" dir="ltr">+222 26 04 10 21</div></div>
+          </a>
+          <div class="citem address-item">
+            <div class="top">
+              <div class="cico">📍</div>
+              <div><div class="clbl">العنوان · Adresse</div><div class="cval" style="font-size:0.95rem">مشروع H110</div></div>
+            </div>
+            <div class="address-detail">
+              <div class="ar">مشروع H110 · نواكشوط · موريتانيا</div>
+              <div class="fr">Mechroue H110 · Nouakchott · Mauritanie</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.2rem;padding:1rem 1.2rem;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.25);border-radius:10px;display:flex;align-items:center;gap:0.8rem">
+          <span style="font-size:1.3rem">💬</span>
+          <div>
+            <div style="color:#25d366;font-weight:700;font-size:0.92rem;margin-bottom:0.15rem">تواصل سريع ومباشر</div>
+            <div style="color:var(--muted);font-size:0.82rem">جميع الأرقام متاحة على واتساب · رد خلال دقائق</div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-card">
+        <div class="cta-big">رقيب يراقب<br>بلا انقطاع</div>
+        <p class="cta-sub">حوّل طريقة إدارة ممتلكاتك العامة إلى نظام شفاف وموثوق وفعّال. انضم إلى المؤسسات التي تثق في رقيب.</p>
+        <div class="btns">
+          <a href="https://wa.me/22226041021?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D8%B9%D8%B1%D8%B6%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%20%D9%84%D9%86%D8%B8%D8%A7%D9%85%20%D8%B1%D9%82%D9%8A%D8%A8" target="_blank" class="bdemo"><span class="btn-ico">🎬</span><span class="btn-txt">طلب عرض تجريبي مجاني</span></a>
+          <a href="https://wa.me/22226041021" target="_blank" class="bwa"><span class="btn-ico">💬</span><span class="btn-txt">تواصل عبر واتساب</span><span class="btn-num" dir="ltr">26 04 10 21</span></a>
+          <a href="https://wa.me/22236617222" target="_blank" class="btel"><span class="btn-ico">💬</span><span class="btn-txt">واتساب</span><span class="btn-num" dir="ltr">36 61 72 22</span></a>
+          <a href="https://wa.me/22236330718" target="_blank" class="btel"><span class="btn-ico">💬</span><span class="btn-txt">واتساب</span><span class="btn-num" dir="ltr">36 33 07 18</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="fbrand-wrap">
+      <div class="nav-logo" style="width:50px;height:50px">ر</div>
+      <div>
+        <div class="fbrand">رقيب · RAQIB</div>
+        <div class="ftag">يقظة بلا حدود · حماية بلا تنازل</div>
+        <div class="fcompany">منتج من إنتاج فانيا تيليسيرفيس — موريتانيا</div>
+      </div>
+    </div>
+  </div>
+  <div class="fcon">
+    <span><strong>Vanya Téléservices</strong> · فانيا تيليسيرفيس</span>
+    <span>📍 Mechroue H110, Nouakchott · 🇲🇷 Mauritanie</span>
+    <span style="color:#25d366;font-weight:600;margin-top:0.4rem">💬 تواصل حصري عبر واتساب · Contact WhatsApp uniquement</span>
+    <span>💬 <a href="https://wa.me/22236617222" style="color:#25d366" dir="ltr">WhatsApp: +222 36 61 72 22</a></span>
+    <span>💬 <a href="https://wa.me/22236330718" style="color:#25d366" dir="ltr">WhatsApp: +222 36 33 07 18</a></span>
+    <span>💬 <a href="https://wa.me/22226041021" style="color:#25d366" dir="ltr">WhatsApp: +222 26 04 10 21</a></span>
+    <span style="margin-top:1rem;color:var(--muted2);font-size:0.78rem">© 2026 Vanya Téléservices · جميع الحقوق محفوظة</span>
+  </div>
+</footer>
+
+<!-- Bouton WhatsApp flottant -->
+<a href="https://wa.me/22226041021?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <span style="position:relative;z-index:1">💬</span>
+  <span class="wa-float-label">تواصل عبر واتساب</span>
+</a>
+
+</body>
+</html>
